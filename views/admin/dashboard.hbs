@@ -1,0 +1,53 @@
+<div class="row">
+	<div class="col-lg-8 offset-2">
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-lg-8">
+						<h1 class="card-title">Dashboard, {{name}}</h1>
+					</div>
+					<div class="col-lg-4"
+					     style="text-align: right">
+						<form action="/logout?_method=DELETE"
+						      method="POST">
+							<button class="btn btn-warning btn-sm"
+							        type="submit"><i class="fas fa-sign-out-alt"></i> Log Out
+							</button>
+						</form>
+					</div>
+				</div>
+				<div class="card-text">
+					<div class="table-responsive">
+						<table class="table table-striped">
+							<thead>
+							<tr>
+								<th>Title</th>
+								<th>Status</th>
+								<th></th>
+							</tr>
+							</thead>
+							<tbody>
+							{{#each articles}}
+								<tr>
+									<td><a href="/{{this.slug}}">{{this.title}}</a></td>
+									<td>
+									{{#if this.approved}}
+										<span class="badge bg-success">Approved</span>
+									{{else}}
+										<span class="badge bg-info">Pending</span>
+									{{/if}}
+									</td>
+									<td>
+										<a href="/edit/{{this.id}}" class="text-dark"><i class="fas fa-edit"></i></a>
+										<a href="/delete/{{this.id}}" onclick="return confirm('Are you sure?')" class="text-danger"><i class="fas fa-trash"></i></a>
+									</td>
+								</tr>
+							{{/each}}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

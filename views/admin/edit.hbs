@@ -1,0 +1,117 @@
+<div class="row">
+	<div class="col-lg-8 offset-2">
+		<div class="card">
+			<div class="card-body">
+				<h1>New Article</h1>
+				<form action="/update"
+				      method="post">
+					<input type="hidden" name="id" value="{{article._id}}">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="form-group">
+								<label for="title"
+								       class="required">Title</label>
+								<input name="title"
+								       id="title"
+								       class="form-control"
+								       placeholder="Title"
+								       value="{{article.title}}"
+								       required>
+							</div>
+						</div>
+						<div class="col-lg-12 mt-4">
+							<div class="form-group">
+								<label for="image"
+								       class="required">Image</label>
+								<input name="image"
+								       id="image"
+								       class="form-control"
+								       placeholder="Image"
+								       value="{{article.image}}"
+								       required>
+							</div>
+						</div>
+						<div class="col-lg-12 mt-4">
+							<div class="form-group">
+								<label for="description"
+								       class="required">Description</label>
+								<textarea name="description"
+								          id="description"
+								          class="form-control"
+								          rows="2"
+								          required>{{article.description}}</textarea>
+							</div>
+						</div>
+						<div class="col-lg-12 mt-4">
+							<div class="form-group">
+								<label for="content"
+								       class="required">Content</label>
+								<textarea name="content"
+								          id="content"
+								          class="form-control tinymce"
+								          rows="10">{{article.content}}</textarea>
+							</div>
+						</div>
+						<div class="col-lg-12 mt-4">
+							<div class="form-group">
+								<label for="topics"
+								       class="required">Topics
+								</label>
+								<br>
+								<small><em>(You can select multiple topics)</em></small>
+								<select name="topics[]"
+								        id="topics"
+								        class="form-control multiSelect"
+								        multiple
+								        required>
+									{{#each topics}}
+										{{#if this.selected}}
+											<option value="{{this.name}}" selected>{{this.name}}</option>
+										{{else}}
+											<option value="{{this.name}}">{{this.name}}</option>
+										{{/if}}
+									{{/each}}
+								</select>
+							</div>
+						</div>
+						<div class="col-lg-12 mt-4">
+							<div class="form-group">
+								<label for="authorName"
+								       class="required">Your Name</label>
+								<input name="authorName"
+								       id="authorName"
+								       class="form-control"
+								       placeholder="Your Name"
+								       value="{{article.authorName}}"
+								       required>
+							</div>
+						</div>
+						<div class="col-lg-12 mt-4">
+							<div class="form-group">
+								<label for="approved"
+								       class="required">Status</label>
+								<select name="approved"
+								        id="approved"
+								        class="form-control"
+								        required>
+									{{#if article.approved}}
+										<option value="true" selected>Approved</option>
+										<option value="false">Pending</option>
+									{{else}}
+										<option value="true">Approved</option>
+										<option value="false" selected>Pending</option>
+									{{/if}}
+								</select>
+							</div>
+						</div>
+						<div class="col-lg-12 mt-4">
+							<button type="submit"
+							        class="btn btn-success"><i class="fas fa-edit"></i> Edit
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

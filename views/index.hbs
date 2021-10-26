@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="col-lg-9">
+		<div class="row">
+			{{#each articles}}
+				<div class="col-lg-6 mt-4">
+					<div class="card">
+						<img src="{{this.image}}"
+						     class="card-img-top"
+						     alt="Profile Photo">
+						<div class="card-body">
+							<h5 class="card-title">{{this.title}}</h5>
+							<div class="card-text mb-2">
+								{{this.description}}
+							</div>
+							<a href="/{{this.slug}}"
+							   class="btn btn-success">Read more</a>
+						</div>
+					</div>
+				</div>
+			{{/each}}
+		</div>
+	</div>
+	<div class="col-lg-3">
+		<div>
+			<h5>Topics</h5>
+			<hr>
+			{{#each topics}}
+				<a href="/topic/{{this.name}}"><span class="badge bg-success">#{{this.name}}</span></a>
+			{{/each}}
+		</div>
+	</div>
+</div>
